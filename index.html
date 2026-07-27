@@ -2,30 +2,32 @@
 <html lang="hi">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Aivoa AI Complaint Generator</title>
+<title>Aivoa AI Complaint</title>
 <style>
-body {font-family:Arial; background:#f5f5f5; padding:20px;}
-.box {background:white; padding:20px; border-radius:10px; max-width:600px; margin:auto;}
-h1 {color:#ff6600;}
-input, textarea, select {width:100%; padding:10px; margin:10px 0; border:1px solid #ccc; border-radius:5px;}
-button {background:#ff6600; color:white; padding:12px; border:none; border-radius:5px; width:100%; font-size:16px;}
-#output {margin-top:20px; background:#eef; padding:15px; border-radius:5px; white-space:pre-wrap;}
+body{background:#f5f5f5;font-family:Arial;padding:20px}
+.box{background:white;padding:20px;border-radius:10px;max-width:600px;margin:auto}
+h1{color:#ff6600}
+input,textarea,select{width:100%;padding:10px;margin:10px 0;border:1px solid #ccc;border-radius:5px;background:white;}
+#output{margin-top:20px;background:#eef;padding:15px;border-radius:5px;white-space:pre-wrap}
 </style>
 </head>
 <body>
 <div class="box">
-<h1>AI Complaint Letter Generator</h1<select id="type"><option>Bank</option><option>Police</option><option>Company</option></select>
-<input id="name" placeholder="Aapka Naam">
-<textarea id="problem" rows="4" placeholder="Problem likhiye..."></textarea>
-<button onclick="makeLetter()">AI Se Letter Banao</button>
-<div id="output"></div>
-</div>><script>
+<h1>AI Complaint Letter Generator</h1>
+<select id="type" onchange="makeLetter()">
+<option>Bank</option><option>Police</option><option>Company</option></select>
+<input id="name" placeholder="Aapka Naam" onkeyup="makeLetter()">
+<textarea id="problem" rows="4" placeholder="Problem likhiye..." onkeyup="makeLetter()"></textarea>
+<div id="output">Letter yaha banega...</div>
+</div>
+<script>
 function makeLetter(){
 let t=document.getElementById('type').value;
 let n=document.getElementById('name').value;
 let p=document.getElementById('problem').value;
-document.getElementById('output').innerText = `Sewa me,\n${t} Vibhag\n\nMera naam ${n} hai. Meri samasya: ${p}\n\nKripya madad karein.\nDhanyawad`;
+if(n!="" && p!=""){
+document.getElementById('output').innerText="Sewa me,\n"+t+" Vibhag\nMera naam "+n+" hai. Meri samasya: "+p+"\n\nKripya madad karein.\nDhanyawad";
+}
 }
 </script>
 </body>
